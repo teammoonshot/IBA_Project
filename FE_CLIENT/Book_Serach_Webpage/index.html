@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>IBA Book Seatching Page</title>
+    <script type="text/javascript">
+        function SearchTextInput() {
+            var string = document.getElementById("str").value;
+            return string;
+        }
+
+        function SendQuery() {
+            location.href = "http://search.naver.com/search.naver?ie=​utf8&where=nexearch&query="+ SearchTextInput();
+        }
+
+        
+    </script>
+    <style type="text/css"></style>
+</head>
+<body style="
+    background-color: #dbdbdb;
+">
+    <!--Logo text-->
+    <div style="
+    position: relative;
+    width: 1000px;
+    height: 200px;
+    margin: auto;
+    padding-top: 100px;
+    text-align:center;
+    font-weight: bold;
+    font-size: 150px;
+    ">IBA</div>
+    <!--Logo intro text-->
+    <div style="
+    height: 100px;
+    position: relative;
+    width: 1000px;
+    margin: auto;
+    padding-top: 10px;
+    text-align:center;
+    font-size: 50px;
+    font-weight: 900;
+    ">Intelligent Book Arrangement Robot</div>
+    <!--search area-->
+    <div style="
+    position: relative;
+    width: 1300px;
+    height: 100px;
+    margin: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    ">
+        <!-- searching icon-->
+        <div style="
+            float: left;
+            position: relative;
+            width: 100px;
+            height: inherit;
+            padding-left: 20px;
+            ">
+            <img style="
+    width: inherit;
+    height: inherit;
+" src="pngwing.png">
+        </div>
+        <!--search text box-->
+        <div style="
+            float: left;
+            width: 1000px;
+            height: inherit;
+            padding-left: 30px;
+            ">
+            <input id="str" type="text" placeholder="원하시는 책을 검색해보세요. 로봇이 찾아 드립니다." style="
+    width: 968px;
+    height: 88px;
+    font-size: 41px;
+    padding-left: 20px;
+    font-weight: 500;
+    border: 6px solid black;
+    background-color: rgb(200, 200, 200);
+    color: black;
+">
+        </div>
+        <!-- Search button area-->
+        <div onclick ="SendQuery()"style="position: relative;float: left;width: 107px;height: 90px;margin-left: 20px;background-color: #fcfcb3;border: 6px solid black;text-align: center;line-height: 2;font-weight: bold;font-size: 44px;">Go!</div>
+    </div>
+    <!--Book list area-->
+    <div style="
+    position: relative;
+    width: 1300px;
+    height: 400px;
+    margin: auto;
+    border-top: 2px solid gray;
+">
+        <!--list text (도서 목록 표시 텍스트) -->
+        <div style="
+    position: relative;
+    width: inherit;
+    height: 40px;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30px;
+    padding-bottom: 30px;
+    font-weight: 900;
+">검색 가능한 도서 목록</div>
+        <!--book list-->
+        <div style="
+    width: inherit;
+    position: relative;
+    height: 300px;
+">
+            <ul></ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
