@@ -1,0 +1,8 @@
+*가상환경 만들기
+1. Anaconda prompt 열기
+2. conda update conda (최신버전)
+3. conda create -n test (test라는 이름의 가상환경 생성)
+4. conda env list (가상환경 리스트 보기 이를 통해 test 가상환경 생성여부 확인)
+5. conda activate test (가상환경 액티브)
+6. 설치할 라이브러리 설치! (가상환경 내부에서)
+7. conda install numpy, matplotlib, opencv-python
