@@ -54,11 +54,16 @@ public class orderPocket {
         return test;
     }
 
-    @PatchMapping(value="/updateBookStatus/{bookCaseNum}")
-    public void updateBookLists(@PathVariable Integer bookCaseNum, @RequestBody String data)
+    @PatchMapping(value="/updateBookStatus/")
+    public void updateBookLists(@RequestParam("bookCaseNum") int bookCaseNum, @RequestBody String data)
     {
-
+        System.out.println(bookCaseNum+" :  TEST OK");
     }
 
+    @GetMapping(value="/orders")
+    public String orderPocket()
+    {
+        return "test";
+    }
 
 }
