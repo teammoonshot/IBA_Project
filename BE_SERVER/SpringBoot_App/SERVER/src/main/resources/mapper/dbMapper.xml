@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace='com.IBA.SERVER.mapper.dbMapper'>
+
+    <select id="get_bookUID" parameterType="Integer" resultType="Integer">
+        <![CDATA[
+        select Location
+        From book
+        where Book_ID = #{Book_ID}
+
+    ]]>
+    </select>
+
+    <select id="get_mapTable" resultType="com.IBA.SERVER.domain.mapTableVO">
+        <![CDATA[
+        select *
+        from map
+    ]]>
+    </select>
+    <!--
+        <update id="updateBookStatus" parameterType="int">
+            <![CDATA[
+
+
+        ]]>
+        </update>
+    -->
+    <select id="selectBook" parameterType="String" resultType="com.IBA.SERVER.domain.bookListsTableDTO">
+        <![CDATA[
+        select *
+        from book
+        where Title like CONCAT('%', #{Title}, '%')
+
+    ]]>
+    </select>
+
+    <select id="getAllBooks" parameterType="int" resultType="com.IBA.SERVER.domain.bookListsTableDTO">
+        <![CDATA[
+        select *
+        from book
+
+
+    ]]>
+    </select>
+</mapper>
