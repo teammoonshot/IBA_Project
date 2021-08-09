@@ -1,14 +1,9 @@
 package com.IBA.SERVER.controller;
 
 import com.IBA.SERVER.service.rootCalculation;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -30,7 +25,7 @@ public class orderPocket {
     }
 
     @PostMapping(value="/requestBookDatas")
-    public String RequestBookDatas(@RequestBody String data){
+    public LinkedHashMap<String, Object> RequestBookDatas(@RequestBody String data){
         //Gson 객체 생성
 
         Gson gson = new Gson();
@@ -54,24 +49,38 @@ public class orderPocket {
         {
             bookUID[i] = bookDatas.get("book"+(i+1)).intValue();
         }
-        LinkedHashMap<String, Object> rootResult= new LinkedHashMap<>();
-        rootResult = RootCalculation.serviceInRobot(bookNum, bookUID);
+        LinkedHashMap<String, Object> result= new LinkedHashMap<>();
+        result = RootCalculation.Requestbookrootdatas(bookNum, bookUID);
 
-        String result = gson.toJson(rootResult);
+        //String result = gson.toJson(rootResult);
 
         return result;
     }
 
-    @PatchMapping(value="/updateBookStatus/")
+    @PatchMapping(value="/updateBookStatus")
     public void updateBookLists(@RequestParam("bookCaseNum") int bookCaseNum, @RequestBody String data)
     {
         System.out.println(bookCaseNum+" :  TEST OK");
     }
 
     @GetMapping(value="/orders")
-    public String orderPocket()
-    {
-        return "test";
+    public LinkedHashMap<String,Object> getOrders(){
+
+        LinkedHashMap<String, Object> result = new LinkedHashMap<>();
+
+        result = RootCalculation.orderService();
+
+        return result;
     }
+
+    @GetMapping(value="/clearorders")
+    public String clearTempRootData(){
+        boolean check = RootCalculation.deleteBookRoot();
+        if(check == true)
+            return "Clearing Temporary data compolete";
+        else
+            return "Error clearing Temporary data";
+    }
+
 
 }
